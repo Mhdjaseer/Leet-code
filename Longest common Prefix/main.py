@@ -16,6 +16,13 @@ class Solution:
 obj=Solution()
 result=obj.longestCommonPrefix(strs)
 print(result)
+
+
+
+
+
+
+
 #     if s[:2] == first:
 #          print(s[:2])
 #          count+=1
