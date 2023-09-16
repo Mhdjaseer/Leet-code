@@ -1,5 +1,5 @@
 # finding the sum of linked list 
-``` first_linked_list=[2,4,5]
+``` first_linked_list=[2,4,3]
     second_linkd_list=[5,6,4]
 ```
 
