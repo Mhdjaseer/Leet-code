@@ -1,7 +1,7 @@
 
-
-first_linked_list=[2,4,3]
-second_linkd_list=[5,6,4]
+#errors
+first_linked_list=[9,9,9,9,9,9,9]
+second_linkd_list=[9,9,9,9]
 
 def myfunction (list1,list2):
     result=[]
