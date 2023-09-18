@@ -1,18 +1,26 @@
-
-#error not compleated 
 class Solution:
-    def isValid(self,s:str)->bool:
-        my_list=['{}','()',[]]
-        for i in range(len(s)):
-            if i%2==0:
-                print(s[i])
+    def isValid(self, s: str) -> bool:
+        stack = []
+        mapping = {')': '(', '}': '{', ']': '['}
 
+        for char in s:
+            if char in mapping:
+                top_element = stack.pop() if stack else '#'
+                if mapping[char] != top_element:
+                    return False
+            else:
+                stack.append(char)
 
+        return not stack
 
-obj=Solution()
+# Create an instance of the Solution class
+obj = Solution()
 
-# taking user input 
-user_input='(){}'
+# Taking user input
+user_input = '(){}'
 
-# passing to the class  
-obj.isValid(user_input)
+# Pass it to the class
+is_valid = obj.isValid(user_input)
+
+# Print the result
+print(is_valid)
