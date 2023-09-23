@@ -63,8 +63,16 @@ def merged_linked_list(list1,list2):
             current1=current1.next 
         else:
             merged_list.append(current2.data)
-            current2=current2.next  
-            
+            current2=current2.next 
+    while current1:
+        merged_list.append(current1.data)
+        current1=current1.next 
+    while current2:
+        merged_list.append(current2.data)
+        current2=current1.next 
+
+    return merged_list 
+
 
 # Usage example:
 my_list = LinkedList()
@@ -86,12 +94,9 @@ my_list.display()  # Output: 1 -> 2 -> 3 -> None
 my_second_list.display()  # Output: 1 -> 3 -> None
 
 #######################################
-class merge:
-    def __init__(self,list1,list2) -> None:
-        pass
-    
-    
 
 
-obj=merge(list2=my_list,list1=my_second_list)
-    
+
+
+obj=merged_linked_list(list2=my_list,list1=my_second_list)
+obj.display()
