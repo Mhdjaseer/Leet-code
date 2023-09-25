@@ -86,22 +86,83 @@ For the pattern “AABAACAABAA”, lps[] is [0, 1, 0, 1, 2, 0, 1, 2, 3, 4, 5]
 For the pattern “AAACAAAAAC”, lps[] is [0, 1, 2, 0, 1, 2, 3, 3, 3, 4] 
 
 For the pattern “AAABAAA”, lps[] is [0, 1, 2, 0, 1, 2, 3]
+```
+```
+    def KMPsearch(pat,txt):
+        M=len(pat)
+        N=len(txt)
+
+        #create lps[] that will hold the longest prefix sucffix 
+        # create for pattern
+        lps=[0]*M
+        j=0 #index for pat[]
+
+        #preprocess the pattern (calculate lps[] array)
+        computeLPsArray(pat,M,lps)
+
+        i=0
+        while (N-i)>=(M-j):
+            if pat[j]==txt[i]:
+                i+=1
+                j+=1
+            
+            if j==M:
+                print("found pattern at index"+ str(i-j))
+                j=lps[j-1]
+            
+            elif i< N and pat[j]!=txt[i]:
+                #do not match lps[0..lps[j-1]] charecters , 
+                # they will match anyway 
+                if j !=0:
+                    j=lps[j-1]
+                else:
+                    i+= 1
+    #function to compute LPS array
+    def computeLPSArray(pat, M, lps):
+        len=0 #length of the previous longest prefix suffix
+        lps[0]=0
+        i=1
+
+        #the loop calculate lps[i] for i =1 to M-1
+
+        while i<M:
+            if pat[i]==pat[len]:
+                len+=1
+                lps[i]=len
+                i+=1
+            else:
+                #this is tricky . consider the example 
+                #AAACAAAA and i=7 . the idea is similar 
+                # to search steps
+                if len !=0:
+                    len =lps[len-1]
+
+                    #also , note that we do not increment i here 
+                else:
+                    lps[i]=o
+                    i+=1
+
+    #Driver code 
+    if __name__=='__main__':
+        txt="ABABDABACDABABCABAB"
+        Pat="ABABCABAB"
+        KMPSearch(pat,txt)
+
+
+
+
+
 
 ```
-def KMPsearch(pat,txt):
-    M=len(pat)
-    N=len(txt)
-
-    #create lps[] that will hold the longest prefix sucffix 
-    # create for pattern
-    lps=[0]*M
-    j=0 #index for pat[]
-
-    #preprocess the pattern (calculate lps[] array)
-    computeLPsArray(pat,M,lps)
-
-    
 
 
+# output
+```
+found pattern at index 10
 
-````
+```
+
+**Time Complexity**:O(N+M) where N is the length of the text and M is the length of the pattern to be found. 
+
+**Auxilary Space:**O(M)
+
