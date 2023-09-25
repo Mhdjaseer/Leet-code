@@ -67,12 +67,41 @@ we pre-process pattern and prepare an integer array lps[] that tells us the coun
 
 ### Preprocessing Overview::
 
+* KMP algorithm preprocess pat[] and constructs an axiliary **lpx[]** of size **m** (same as the size of the pattern ) which is used to skip charecters while matching .
+* Name **lps** indicates the longest proper prefix which is also a suffix. A proper prefix of "ABC" are "",'A','AB' and "ABC".proper prefixes are "",'A' and 'AB' . Suffixes of the string are "",'C',"BC" and 'ABC'
+* We search for lps in subpatterns . More clearly we focus on sub stings of patterns that are both prefix and suffix 
+* for each sub-pattern pat[0] where i=0 to m-1 ,lps[i] stores the length of the maximum matching proper prefix which is also a suffix of th esub-pattern pat[0..i]
+
+```
+lps[i]= the longest proper prefix of pat[0,i] which is also a suffix of pat [0..i]
+
+```
+**NOTE**: lps[i] could also be defined as the longest prefix which is also a proper suffix . we need to use it properly in one place to make sure that the whole substring not considered 
+
+examples of lps[] construction :
+```
+for the patters"AAAA",lps[]is [0,1,2,3]
+For the pattern "ABCD",lps[] is [0,0,0,0,0]
+For the pattern “AABAACAABAA”, lps[] is [0, 1, 0, 1, 2, 0, 1, 2, 3, 4, 5]
+For the pattern “AAACAAAAAC”, lps[] is [0, 1, 2, 0, 1, 2, 3, 3, 3, 4] 
+
+For the pattern “AAABAAA”, lps[] is [0, 1, 2, 0, 1, 2, 3]
+
+```
+def KMPsearch(pat,txt):
+    M=len(pat)
+    N=len(txt)
+
+    #create lps[] that will hold the longest prefix sucffix 
+    # create for pattern
+    lps=[0]*M
+    j=0 #index for pat[]
+
+    #preprocess the pattern (calculate lps[] array)
+    computeLPsArray(pat,M,lps)
+
+    
 
 
 
-
-
-
-
-
-# do learn Naive-pattern-searching  algorithm
+````
