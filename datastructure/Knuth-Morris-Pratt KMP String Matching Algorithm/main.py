@@ -39,6 +39,7 @@ def KMPSearch(pat,txt):
 
 
 def computeLPSArray(pat,M,lps):
+    pass
     len=0 #length of the previous longest prefix suffix
     lps[0]=0 #lps[0] is always 0
     i=1
