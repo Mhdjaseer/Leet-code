@@ -30,3 +30,8 @@ Let us understand the working of Depth First Search  with the help of the follow
 **step2:**:Visit 0 and put its adjacent nodes which are not visited yet into the stack . 
 ![Alt text](image-2.png)
 ----------
+
+-------
+**step3**:Now , node 1 at the top of the stack , so visit node 1 and pop if from the stack and put all of its adjacent node which are not visited in the stack . 
+![Alt text](image-3.png)
+-------
